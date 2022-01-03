@@ -1,14 +1,17 @@
 use proconio::input;
-use std::collections::HashMap;
 
 fn main() {
     input! {
-        n: i32,
-        ss: [String; n]
+        s: String
     }
-    let mut map = HashMap::new();
-    for s in ss {
-        *map.entry(s).or_insert(0) += 1;
+    let n = s.len() as usize;
+    let t = "oxx".repeat(100000);
+    let mut flg = false;
+    for i in 0..(t.len()) {
+        let j = i as usize;
+        if j+n <= t.len() && &t[j..j+n] == s {
+            flg = true
+        }
     }
-    println!("{}",map.iter().max_by(|(_, a), (_, b)| a.cmp(b)).map(|(k, _)| k).unwrap());
+    println!("{}",if flg {"Yes"} else {"No"});
 }

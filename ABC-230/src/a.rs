@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        d: f32,
+        n: i32,
     }
-    println!("{}",d/100.);
+    let m = if n >= 42 {n+1} else {n};
+    println!("AGC{:>03}",m);
 }
